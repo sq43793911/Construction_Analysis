@@ -1,6 +1,6 @@
 %% Maxwell Ast
-
-clear all;
+close;
+clear;
 
 %%
 
@@ -10,7 +10,7 @@ eta = 0.5; %Mpas
 % Zeit [ms]
 Tstart = 0;
 Tend = 5;
-dt = 0.1;
+dt = 0.01;
 
 T = Tstart:dt:Tend;
 aa = length (T);
@@ -65,7 +65,7 @@ epsilondot = epsdot*10;
 
 IC = 0;
 
-options=odeset('MaxStep',1e-4); % Anpassen der maximalen Schrittweite
+options=odeset('MaxStep',1e-5); % Anpassen der maximalen Schrittweite
 [t, Sigma1] = ode23(@(t,sigma) DGLMaxwell(t,sigma,E,eta,tepsilondot,epsilondot),Tspan,IC,options);
 
 for x = 1:aa
